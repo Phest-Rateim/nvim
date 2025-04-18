@@ -2,21 +2,30 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "solarized",
+      colorscheme = "rose-pine",
     },
   },
 
   {
-  'maxmx03/solarized.nvim',
-  lazy = false,
-  priority = 1000,
-  ---@type solarized.config
-  opts = {},
-  config = function(_, opts)
-    vim.o.termguicolors = true
-    vim.o.background = 'light'
-    require('solarized').setup(opts)
-    vim.cmd.colorscheme 'solarized'
-  end,
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "typescript",   -- Parser para TypeScript
+        "tsx",
+      },
+    },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    opts = {
+      servers = {
+        tsserver = {},  -- Configuración del servidor TypeScript
+      },
+    },
   }
 }
